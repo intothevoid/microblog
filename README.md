@@ -10,4 +10,4 @@ A microblog written in Python using Flask, SQLAlchemy and other supporting packa
 
 Thanks to Miguel Grinberg, I followed his tutorial while creating this microblog.
 
-[text link with title](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world "Mega Flask Tutorial")
+[Mega Flask Tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world "Mega Flask Tutorial")
