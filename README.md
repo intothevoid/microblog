@@ -3,6 +3,9 @@
 A microblog written in Python using Flask, SQLAlchemy and other supporting packages.
 
 ---
+
+**History**
+
 - Created structure
 - Used jinja templates to create html templates
 - Used flask_wtf to create render web forms
