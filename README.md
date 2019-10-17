@@ -10,6 +10,8 @@ A microblog written in Python using Flask, SQLAlchemy and other supporting packa
 - Used jinja templates to create html templates
 - Used flask_wtf to create render web forms
 - Used SQLAlchemy and SQLMigrate to setup SQLite database
+- Added user login form and functionality
+- Added new user registration form and functionality
 
 Thanks to Miguel Grinberg, I followed his tutorial while creating this microblog.
 
