@@ -12,6 +12,7 @@ A microblog written in Python using Flask, SQLAlchemy and other supporting packa
 - Used SQLAlchemy and SQLMigrate to setup SQLite database
 - Added user login form and functionality
 - Added new user registration form and functionality
+- Added support for profiles and avatars
 
 Thanks to Miguel Grinberg, I followed his tutorial while creating this microblog.
 
