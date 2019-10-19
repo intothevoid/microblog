@@ -4,7 +4,7 @@ A microblog written in Python using Flask, SQLAlchemy and other supporting packa
 
 ---
 
-**History**
+## History
 
 - Created structure
 - Used jinja templates to create html templates
@@ -13,6 +13,7 @@ A microblog written in Python using Flask, SQLAlchemy and other supporting packa
 - Added user login form and functionality
 - Added new user registration form and functionality
 - Added support for profiles and avatars
+- Error handling, email logs, file logs and profile edit bug fix
 
 Thanks to Miguel Grinberg, I followed his tutorial while creating this microblog.
 
