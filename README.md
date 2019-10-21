@@ -14,6 +14,7 @@ A microblog written in Python using Flask, SQLAlchemy and other supporting packa
 - Added new user registration form and functionality
 - Added support for profiles and avatars
 - Error handling, email logs, file logs and profile edit bug fix
+- Add followers, follow, unfollow, unit tests
 
 Thanks to Miguel Grinberg, I followed his tutorial while creating this microblog.
 
