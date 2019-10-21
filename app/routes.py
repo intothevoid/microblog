@@ -1,12 +1,16 @@
-from flask import render_template, flash, redirect, url_for, request
-from app import app
-from app import db
-from app.forms import LoginForm, RegistrationForm, EditProfileForm
-from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User
-from werkzeug.urls import url_parse
 from datetime import datetime
+from flask import render_template, flash, redirect, url_for, request
+from flask_login import current_user, login_user, logout_user, login_required
+from werkzeug.urls import url_parse
+from app import app, db
+from app.forms import LoginForm, RegistrationForm, EditProfileForm
+from app.models import User
 
+@app.before_request
+def before_request():
+    if current_user.is_authenticated:
+        current_user.last_seen = datetime.utcnow()
+        db.session.commit()
 
 @app.route('/')
 @app.route('/index')
@@ -95,11 +99,37 @@ def edit_profile():
         form.about_me.data = current_user.about_me
     return render_template("edit_profile.html", title="Edit Profile", form=form)
 
-@app.before_request
-def before_request():
-    if current_user.is_authenticated:
-        current_user.last_seen = datetime.utcnow()
-        db.session.commit()
+@app.route("/follow/<username>")
+@login_required
+def follow(username):
+    user = User.query.filter_by(username=username).first()
+    if user is None:
+        flash(f"User {username} was not found.")
+        return redirect(url_for("index"))
+    if user == current_user:
+        flash("You cannot follow yourself!")
+        return redirect(url_for("user", username=username))
+    current_user.follow(user)
+    db.session.commit()
+    flash(f"You are now following {username}")
+    return redirect(url_for("user", username=username))
+
+@app.route("/unfollow/<username>")
+@login_required
+def unfollow(username):
+    user = User.query.filter_by(username=username).first()
+    if user is None:
+        flash(f"User {username} not found.")
+        return redirect(url_for("index"))
+    if user == current_user:
+        flash("You cannot unfollow yourself!")
+        return redirect(url_for("user", username=username))
+    current_user.unfollow(user)
+    db.session.unfollow()
+    flash(f"You have unfollowed user {username}")
+    return redirect(url_for("user", username=username))
+
+
 
 @app.route("/logout")
 def logout():
